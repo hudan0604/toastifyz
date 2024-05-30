@@ -1,13 +1,31 @@
-:host {
+div {
   padding: 32px;
-  background: #fff;
-  border: 1px solid transparent;
   display: flex;
   position: absolute;
   width: 50vw;
   left: 0;
   right: 0;
   margin: auto;
-  top: -200px;
+  top: -100px;
   border-radius: 12px;
+  transition: top cubic-bezier(0.44, 1.62, 0.51, -0.59) 800ms;
+
+  &.animated {
+    top: 80px;
+  }
+
+  &.success {
+    border: 2px solid green;
+    background: rgb(207, 225, 207);
+  }
+
+  &.warning {
+    border: 2px solid rgb(232, 127, 15);
+    background: rgb(238, 179, 133);
+  }
+
+  &.error {
+    border: 2px solid rgb(205, 32, 13);
+    background: rgb(241, 178, 162);
+  }
 }

@@ -1,2 +1,22 @@
 <router-outlet></router-outlet>
+@if (toastForm) {
+<form action="" [formGroup]="toastForm" (ngSubmit)="launchToast()">
+  <select formControlName="type">
+    @for(option of ['success', 'warning', 'error']; track option) {
+    <option [value]="option">{{ option }}</option>
+    }
+  </select>
+  <select formControlName="duration">
+    <option value="" selected>Choose a duration (default: 5,000 ms.)</option>
+
+    @for(option of [5000, 6000, 7000, 8000, 9000, 10000]; track option) {
+    <option [value]="option">{{ option }}</option>
+    }
+  </select>
+  <input type="text" placeholder="Type a sample text" formControlName="text" />
+  <button type="submit" [disabled]="toastForm.invalid">Try toast</button>
+</form>
+
+}
+
 <app-toast></app-toast>

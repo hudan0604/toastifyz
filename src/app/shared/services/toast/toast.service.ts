@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { ToastConfig } from '../../models/toast.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastService {
-
-  constructor() { }
+  public toastConfig = new Subject<ToastConfig>();
+  public toastConfig$: Observable<ToastConfig> =
+    this.toastConfig.asObservable();
 }
