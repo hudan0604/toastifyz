@@ -1,3 +1,17 @@
-<div [class.animated]="toastConfig.isOpened" [class]="toastConfig.type">
-  {{ toastConfig.text }}
+<div
+  [class.toastWraper--animated]="toastConfig.isOpened"
+  [class]="'toastWraper toastWraper--' + toastConfig.type"
+  (mouseenter)="stopProgressBar.next()"
+  (mouseleave)="handleAnimation()"
+>
+  <div>{{ toastConfig.text }}</div>
+  <div [class]="'progressionWraper progressionWraper--' + toastConfig.type">
+    <div
+      [class]="'progressionBar progressionBar--' + toastConfig.type"
+      [ngStyle]="{
+        width: progressionPerc + '%',
+        borderBottomRightRadius: progressionPerc === 100 ? '12px' : '0'
+      }"
+    ></div>
+  </div>
 </div>
